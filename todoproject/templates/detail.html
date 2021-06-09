@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="shadow card">
+    <div class="card-body">
+        <h5 class="card-title">{{task_value.name}}</h5>
+        <p><b>{{task_value.priority}}</b></p>
+        <p><b>{{task_value.date}}</b></p>
+        <form method="post" action="{% url 'todoapp:deleteview' task_value.id %}">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete">
+        </form><br>
+        <a href="{% url 'todoapp:updateview' task_value.id %}"><button class="btn btn-success">Update</button></a>
+    </div>
+</div>
+{% endblock %}
